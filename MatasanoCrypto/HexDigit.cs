@@ -25,7 +25,25 @@ namespace MatasanoCrypto
             }
             else
             {
-                throw new InvalidHexDigitException(_asChar);
+                throw new InvalidHexDigitException(hexDigit);
+            }
+        }
+
+        public HexDigit(byte hexByte)
+        {
+            _asByte = hexByte;
+
+            if (hexByte <= 0x09)
+            {
+                _asChar = Convert.ToChar(hexByte + '0');
+            }
+            else if (hexByte >= 0x0a && hexByte <= 0x0f)
+            {
+                _asChar = Convert.ToChar(hexByte + 'a' - 10);
+            }
+            else
+            {
+                throw new InvalidHexDigitException(hexByte);
             }
         }
     }

@@ -10,24 +10,24 @@ namespace MatasanoCrypto.Test
     {
         [TestCase('A')]
         [TestCase('F')]
-        public void GivenValidHexDigit_WhichIsUpperCase_AsCharReturnsSameDigitAsLowerCase(char upperCaseHexDigit)
+        public void GivenValidHexChar_WhichIsUpperCase_AsCharReturnsSameCharAsLowerCase(char upperCaseHexChar)
         {
-            var expectedHexDigit = Char.ToLower(upperCaseHexDigit);
+            var expectedHexChar = Char.ToLower(upperCaseHexChar);
 
-            var hexDigit = new HexDigit(upperCaseHexDigit);
+            var hexDigit = new HexDigit(upperCaseHexChar);
 
-            hexDigit.AsChar.Should().Be(expectedHexDigit);
+            hexDigit.AsChar.Should().Be(expectedHexChar);
         }
 
         [TestCase('a')]
         [TestCase('f')]
         [TestCase('0')]
         [TestCase('9')]
-        public void GivenValidHexDigit_AsCharReturnsSameDigit(char expectedHexDigit)
+        public void GivenValidHexChar_AsCharReturnsSameChar(char expectedHexChar)
         {
-            var hexDigit = new HexDigit(expectedHexDigit);
+            var hexDigit = new HexDigit(expectedHexChar);
 
-            hexDigit.AsChar.Should().Be(expectedHexDigit);
+            hexDigit.AsChar.Should().Be(expectedHexChar);
         }
 
         [TestCase('0', 0x00)]
@@ -36,22 +36,49 @@ namespace MatasanoCrypto.Test
         [TestCase('a', 0x0a)]
         [TestCase('b', 0x0b)]
         [TestCase('f', 0x0f)]
-        public void GivenValidHexDigit_AsByteReturnsExpectedByte(char digit, byte expectedByte)
+        public void GivenValidHexChar_AsByteReturnsExpectedByte(char hexChar, byte expectedByte)
         {
-            var hexDigit = new HexDigit(digit);
+            var hexDigit = new HexDigit(hexChar);
 
             hexDigit.AsByte.Should().Be(expectedByte);
         }
 
-        [TestCase('g')]
-        [TestCase('h')]
-        [TestCase('z')]
-        [TestCase('-')]
-        public void GivenInvalidHexDigit_ConstructorShouldThrow_InvalidHexDigitException(char invalidHexDigit)
+        [TestCase('g', "'g'")]
+        [TestCase('h', "'h'")]
+        [TestCase('z', "'z'")]
+        [TestCase('-', "'-'")]
+        public void GivenInvalidHexChar_ConstructorShouldThrow_InvalidHexDigitException(char invalidHexChar, string expectedError)
         {
-            Action constructWithInvalidHexDigit = () => new HexDigit(invalidHexDigit);
+            Action constructWithInvalidHexChar = () => new HexDigit(invalidHexChar);
 
-            constructWithInvalidHexDigit.ShouldThrow<InvalidHexDigitException>();
+            constructWithInvalidHexChar.ShouldThrow<InvalidHexDigitException>(expectedError);
+        }
+
+        [TestCase(0x00, '0')]
+        [TestCase(0x0f, 'f')]
+        public void GivenValidHexByte_AsCharReturnsExpectedChar(byte hexByte, char expectedHexChar)
+        {
+            var hexDigit = new HexDigit(hexByte);
+
+            hexDigit.AsChar.Should().Be(expectedHexChar);
+        }
+
+        [TestCase(0x00)]
+        [TestCase(0x0f)]
+        public void GivenValidHexByte_AsByteReturnsExpectedByte(byte expectedHexByte)
+        {
+            var hexDigit = new HexDigit(expectedHexByte);
+
+            hexDigit.AsByte.Should().Be(expectedHexByte);
+        }
+
+        [TestCase(0x10, "16")]
+        [TestCase(0xf0, "240")]
+        public void GivenInvalidHexByte_ConstructorShouldThrow_InvalidHexDigitException(byte invalidHexByte, string expectedError)
+        {
+            Action constructWithInvalidHexByte = () => new HexDigit(invalidHexByte);
+
+            constructWithInvalidHexByte.ShouldThrow<InvalidHexDigitException>(expectedError);
         }
 
     }

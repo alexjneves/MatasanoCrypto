@@ -32,6 +32,24 @@ namespace MatasanoCrypto
             }
         }
 
+        public HexString(HexDigit[] hexDigits)
+        {
+            if ((hexDigits.Length & 1) != 0)
+            {
+                throw new InvalidHexStringException();
+            }
+
+            var hexChars = new char[hexDigits.Length];
+
+            for (var i = 0; i < hexDigits.Length; ++i)
+            {
+                hexChars[i] = hexDigits[i].AsChar;
+            }
+
+            _hex = new string(hexChars);
+            _digits = hexDigits;
+        }
+
         public HexDigit this[int i]
         {
             get { return _digits[i]; }

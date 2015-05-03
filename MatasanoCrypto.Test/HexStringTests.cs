@@ -30,6 +30,31 @@ namespace MatasanoCrypto.Test
             hexString.Hex.Should().Be(expectedHex);
         }
 
+        [Test]
+        public void GivenValidHex_IndexOperator_ReturnsExpectedHexDigits()
+        {
+            const string Hex = "0c9f";
+
+            var expectedHexDigits = new HexDigit[]
+            {
+                new HexDigit('0'),
+                new HexDigit('c'), 
+                new HexDigit('9'), 
+                new HexDigit('f'), 
+            };
+
+            var hexString = new HexString(Hex);
+
+            for (var i = 0; i < Hex.Length; ++i)
+            {
+                var expectedDigit = expectedHexDigits[i];
+                var actualDigit = hexString[i];
+
+                expectedDigit.AsChar.Should().Be(actualDigit.AsChar);
+                expectedDigit.AsByte.Should().Be(actualDigit.AsByte);
+            }
+        }
+
         [TestCase("")]
         [TestCase("abc")]
         [TestCase("zz")]
@@ -38,6 +63,32 @@ namespace MatasanoCrypto.Test
             Action constructWithInvalidHex = () => new HexString(invalidHex);
 
             constructWithInvalidHex.ShouldThrow<InvalidHexStringException>();
+        }
+
+        [Test]
+        public void GivenValidHexDigitArray_ConstructsExpectedHexString()
+        {
+            var hexDigits = new HexDigit[]
+            {
+                new HexDigit('0'),
+                new HexDigit('f'), 
+            };
+
+            const string ExpectedHex = "0f";
+
+            var hexString = new HexString(hexDigits);
+
+            hexString.Hex.Should().Be(ExpectedHex);
+        }
+
+        [Test]
+        public void GivenInvalidHexDigitArray_ConstructorShouldThrow_InvalidHexStringException()
+        {
+            var hexDigits = new HexDigit[] { new HexDigit('0') };
+
+            Action constructWithInvalidHexDigitArray = () => new HexString(hexDigits);
+
+            constructWithInvalidHexDigitArray.ShouldThrow<InvalidHexStringException>();
         }
 
     }

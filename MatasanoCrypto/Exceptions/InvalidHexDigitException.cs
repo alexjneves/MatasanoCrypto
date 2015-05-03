@@ -8,5 +8,10 @@ namespace MatasanoCrypto.Exceptions
             base(string.Format("'{0}'", invalidChar))
         {
         }
+
+        public InvalidHexDigitException(byte invalidByte) :
+            base(invalidByte.ToString())
+        {
+        }
     }
 }

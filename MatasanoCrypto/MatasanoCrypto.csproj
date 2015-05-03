@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BytesToHexConverter.cs" />
+    <Compile Include="Exceptions\FixedXorException.cs" />
+    <Compile Include="FixedXor.cs" />
     <Compile Include="HexDigit.cs" />
     <Compile Include="HexString.cs" />
     <Compile Include="HexToBytesConverter.cs" />

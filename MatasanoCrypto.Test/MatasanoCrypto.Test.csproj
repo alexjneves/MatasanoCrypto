@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BytesToHexConverterTests.cs" />
+    <Compile Include="FixedXorTests.cs" />
     <Compile Include="HexDigitTests.cs" />
     <Compile Include="HexToBytesConverterTests.cs" />
     <Compile Include="HexStringTests.cs" />
