@@ -2,7 +2,7 @@ using System;
 
 namespace MatasanoCrypto.Exceptions
 {
-    public class InvalidHexStringException : Exception
+    public sealed class InvalidHexStringException : Exception
     {
         public InvalidHexStringException()
         {

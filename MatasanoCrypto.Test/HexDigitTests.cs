@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace MatasanoCrypto.Test
 {
     [TestFixture]
-    class HexDigitTests
+    internal sealed class HexDigitTests
     {
         [TestCase('A')]
         [TestCase('F')]

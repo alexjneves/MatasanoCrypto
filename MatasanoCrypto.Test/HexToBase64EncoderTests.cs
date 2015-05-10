@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace MatasanoCrypto.Test
 {
     [TestFixture]
-    class HexToBase64EncoderTests
+    internal sealed class HexToBase64EncoderTests
     {
         [Test]
         public void GivenHexString_WhichRequiresNoPadding_EncodingProducesExpectedStringWithNoPadding()

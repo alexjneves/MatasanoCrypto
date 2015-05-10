@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MatasanoCrypto
 {
-    public class HexToBase64Encoder
+    public sealed class HexToBase64Encoder
     {
         private const string Base64Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
         private const int SixBitMask = 0x3F;

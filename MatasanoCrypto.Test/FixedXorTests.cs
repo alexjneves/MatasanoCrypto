@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace MatasanoCrypto.Test
 {
     [TestFixture]
-    public class FixedXorTests
+    internal sealed class FixedXorTests
     {
         [Test]
         public void GivenTwoHexStrings_OfEqualLengths_FixedXorProducesExpectedResult()

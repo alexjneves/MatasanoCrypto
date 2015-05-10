@@ -1,6 +1,6 @@
 ﻿namespace MatasanoCrypto
 {
-    public class HexToBytesConverter
+    public sealed class HexToBytesConverter
     {
         private readonly byte[] _bytes;
 

@@ -3,7 +3,7 @@ using MatasanoCrypto.Exceptions;
 
 namespace MatasanoCrypto
 {
-    public class HexDigit
+    public sealed class HexDigit
     {
         private readonly char _asChar;
         private readonly byte _asByte;

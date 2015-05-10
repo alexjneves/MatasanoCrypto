@@ -2,7 +2,7 @@
 
 namespace MatasanoCrypto
 {
-    public class HexString
+    public sealed class HexString
     {
         private readonly HexDigit[] _digits;
         private readonly string _hex;

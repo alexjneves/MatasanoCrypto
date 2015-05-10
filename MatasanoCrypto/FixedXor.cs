@@ -1,9 +1,8 @@
-﻿using System;
-using MatasanoCrypto.Exceptions;
+﻿using MatasanoCrypto.Exceptions;
 
 namespace MatasanoCrypto
 {
-    public class FixedXor
+    public sealed class FixedXor
     {
         private readonly HexString _result;
 

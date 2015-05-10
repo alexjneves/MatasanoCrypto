@@ -2,7 +2,7 @@
 
 namespace MatasanoCrypto
 {
-    public class BytesToHexConverter
+    public sealed class BytesToHexConverter
     {
         private readonly HexString _hexString;
 

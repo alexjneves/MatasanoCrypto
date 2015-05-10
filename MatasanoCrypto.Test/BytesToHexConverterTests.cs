@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace MatasanoCrypto.Test
 {
     [TestFixture]
-    public class BytesToHexConverterTests
+    internal sealed class BytesToHexConverterTests
     {
         [Test]
         public void GivenValidByteArray_ConvertsToExpectedHexString()
